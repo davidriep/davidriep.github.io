@@ -15,32 +15,20 @@ function yourGuess() {
     }
 }
 
-function showNumberToGuess() {
-    if (document.getElementById('cheat').checked) {
-        document.getElementById('numberToGuess').value = numToGuess;
-        document.getElementById('cheatShow').style.display = 'inline';
-    } else {
-        document.getElementById('numberToGuess').value = '';
-        document.getElementById('cheatShow').style.display = 'none';
-    }
-}
-
 var numToGuess = 5;
 
 </script>
 </head>
 <body>
 
-<fieldset>
- <legend>Inputs</legend>
- <label for="guess">Your Guess:</label>
+ <label for="guess">Enter the Code:</label>
  <input type="text" id="guess" />
  <input type="button" onclick="yourGuess()" value="submit" /><br />
- </fieldset>
-<fieldset>
+
+
  <legend> Output </legend>
  <textarea id="output" name="output" rows="5" style="width: 100%;"></textarea>
-</fieldset>
+
 
 </body>
 </html>
