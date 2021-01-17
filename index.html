@@ -17,6 +17,19 @@ function yourGuess() {
     }
 }
 
+function searchKeyPress(e)
+{
+    // look for window.event in case event isn't passed in
+    e = e || window.event;
+    if (e.keyCode == 13)
+    {
+        document.getElementById('btnSearch').click();
+        event.currentTarget.value = ""
+        return false;
+    }
+    return true;
+}
+
 var numToGuess = 501;
 
 </script>
@@ -24,8 +37,8 @@ var numToGuess = 501;
 <body>
 
  <label for="guess">Guess a number between 1 and 1000:</label>
- <input type="text" id="guess" />
- <input type="button" onclick="yourGuess()" value="submit" /><br />
+ <input type="text" id="guess" onkeypress="return searchKeyPress(event);" />
+ <input type="button" id="btnSearch" onclick="yourGuess()" value="submit" /><br />
 
 
  <legend> Output </legend>
