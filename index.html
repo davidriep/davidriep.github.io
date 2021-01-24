@@ -1,15 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="css/style.css">
-    <title>Game</title>
+<title>Number guessing game</title>
+<style>
+	html		{
+					font-family: sans-serif;
+				}
+	body 		{
+					width: 50%;
+					max-width: 800px;
+					min-width: 480px;
+					margin: 0 auto;
+				}
+	.lastResult	{
+					color: white;
+					padding: 3px;
+				}
+	.answer 	{
+					visibility: hidden;
+				}
+</style>
+</head>
 <script>
+var numToGuess = 1945;
+
 function yourGuess() {
     guess = document.getElementById("guess").value;
     guesses = document.getElementById("output");
+	hid = document.getElementsByClassName("answer");
 
     if (guess == numToGuess) {
-        guesses.value = guesses.value + "\r" + "You have guessed correctly! ("+guess+")";
+        guesses.value = guesses.value + "\r" + "Correct, move to the next clue http://www.google.com! ("+guess+")";
+		hid[0].style.visibility = "visible"
     } else if (guess > numToGuess) {
         guesses.value = guesses.value + "\r" + "You guessing too high!("+guess+")";
     } else {
@@ -29,21 +51,21 @@ function searchKeyPress(e)
     }
     return true;
 }
-
-var numToGuess = 471;
-
 </script>
-</head>
+
 <body>
+<h1>Unlock the Code - Clue 1</h1>
+<p>What year did World War II end?</p>
+<div class="form">
+	<label for="guessField">Your answer:</label>
+	<input type="text" id="guess" onkeypress="return searchKeyPress(event);">
+	<input type="button" id="btnSearch" onclick="yourGuess()" value="Submit">
+	<input type="text" id="output" name="output" hidden="true">
+</div>
 
- <label for="guess">Guess a number between 1 and 1000:</label>
- <input type="text" id="guess" onkeypress="return searchKeyPress(event);" />
- <input type="button" id="btnSearch" onclick="yourGuess()" value="submit" /><br />
 
-
- <legend> Output </legend>
- <textarea id="output" name="output" rows="15" style="width: 50%;"></textarea>
-<!-- <img src = "image/frame.png"> -->
-
+<div class="answer">
+    <p class="and"><a href = "http://www.google.com">Next Clue</a></p>
+</div>
 </body>
 </html>
