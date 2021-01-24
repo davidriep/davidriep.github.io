@@ -12,16 +12,6 @@
 						min-width: 480px;
 						margin: 0 auto;
 					}
-	.lastResult		{
-						color: white;
-						padding: 3px;
-					}
-	.rightanswer	{
-						visibility: hidden;
-					}
-	.wronganswer	{
-						visibility: hidden;
-					}
 </style>
 </head>
 <script>
@@ -34,13 +24,13 @@ function yourGuess()
 		hid2 = document.getElementsByClassName("wronganswer");
 		if (guess == numToGuess)
 			{
-				hid[0].style.visibility = "visible"
-				hid2[0].style.visibility = "hidden"
+				document.getElementById("div1").style.display = 'block';
+				document.getElementById("div2").style.display = 'none';
 			}
 		else
 			{
-				hid[0].style.visibility = "hidden"
-				hid2[0].style.visibility = "visible"
+				document.getElementById("div2").style.display = 'block';
+				document.getElementById("div1").style.display = 'none';
 			}
 	}
 
@@ -65,15 +55,17 @@ function searchKeyPress(e)
 	<label for="guessField">Your answer:</label>
 	<input type="text" id="guess" onkeypress="return searchKeyPress(event);">
 	<input type="button" id="btnSearch" onclick="yourGuess()" value="Submit">
-	<input type="text" id="output" name="output" hidden="true">
 </div>
 
 
-<div class="rightanswer">
-    <p class="and"><a href = "http://www.google.com">Next Clue</a></p>
+<div id="div1" style="display:none">
+    <p class="and"><a href = "http://www.google.com">You have answered correctly!</a></p>
 </div>
-<div class="wronganswer">
+<div id="div2" style="display:none">
 	<p class="and">Wrong!!!</p>
 </div>
+
+<!-- <a href="#" onclick="document.getElementById('form_[form_key]').reset();">Reset Form</a> -->
+
 </body>
 </html>
