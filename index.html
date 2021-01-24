@@ -3,41 +3,46 @@
 <head>
 <title>Number guessing game</title>
 <style>
-	html		{
-					font-family: sans-serif;
-				}
-	body 		{
-					width: 50%;
-					max-width: 800px;
-					min-width: 480px;
-					margin: 0 auto;
-				}
-	.lastResult	{
-					color: white;
-					padding: 3px;
-				}
-	.answer 	{
-					visibility: hidden;
-				}
+	html			{
+						font-family: sans-serif;
+					}
+	body 			{
+						width: 50%;
+						max-width: 800px;
+						min-width: 480px;
+						margin: 0 auto;
+					}
+	.lastResult		{
+						color: white;
+						padding: 3px;
+					}
+	.rightanswer	{
+						visibility: hidden;
+					}
+	.wronganswer	{
+						visibility: hidden;
+					}
 </style>
 </head>
 <script>
 var numToGuess = 1945;
-
-function yourGuess() {
-    guess = document.getElementById("guess").value;
-    guesses = document.getElementById("output");
-	hid = document.getElementsByClassName("answer");
-
-    if (guess == numToGuess) {
-        guesses.value = guesses.value + "\r" + "Correct, move to the next clue http://www.google.com! ("+guess+")";
-		hid[0].style.visibility = "visible"
-    } else if (guess > numToGuess) {
-        guesses.value = guesses.value + "\r" + "You guessing too high!("+guess+")";
-    } else {
-        guesses.value = guesses.value + "\r" + "You guessing too low!("+guess+")";
-    }
-}
+function yourGuess()
+	{
+		guess = document.getElementById("guess").value;
+		guesses = document.getElementById("output");
+		hid = document.getElementsByClassName("rightanswer");
+		hid2 = document.getElementsByClassName("wronganswer");
+		if (guess == numToGuess)
+			{
+				hid[0].style.visibility = "visible"
+				hid2[0].style.visibility = "hidden"
+			}
+		else
+			{
+				hid[0].style.visibility = "hidden"
+				hid2[0].style.visibility = "visible"
+			}
+	}
 
 function searchKeyPress(e)
 {
@@ -64,8 +69,11 @@ function searchKeyPress(e)
 </div>
 
 
-<div class="answer">
+<div class="rightanswer">
     <p class="and"><a href = "http://www.google.com">Next Clue</a></p>
+</div>
+<div class="wronganswer">
+	<p class="and">Wrong!!!</p>
 </div>
 </body>
 </html>
